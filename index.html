@@ -15,7 +15,16 @@
     <p id="para2"></p>
     <button id="requete2">Lance Requête</button>
     <script>
-        //On crée une nouvelle instance d'objet AJAX
+        document.querySelector("#requete")
+            .addEventListener('click', function() {
+                doAjax({
+                    url: 'fichier.txt',
+                    callback: function(reponse) {
+                        document.querySelector("#param")
+                    }
+                })
+            })
+            //On crée une nouvelle instance d'objet AJAX
         let ajax = new XMLHttpRequest();
         //AJAX étant une service asynchrone, il va falloir 
         //lui dire via des évènements comment se comporter

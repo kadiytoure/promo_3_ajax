@@ -7,7 +7,9 @@ function doAjax(options) {
         args: '',
         callback: function() {},
         callbackError: function() {}
-    };
+
+    }
+
     //On assigne les arguments d'options à défaults
     assignArgs(options, defaults);
 
@@ -36,6 +38,11 @@ function doAjax(options) {
         }
 
     };
+    //On ouvre le requête en lui fournissant le type de
+    //requête HTTP, l'url à requêter et si c'est synchrone ou non
+    ajax.open(defaults.method, defaults.url, defaults.async);
+    //On envoie la requête
+    ajax.send(defaults.args);
 
     /*
     Fonction qui itère sur les propriétés d'un objet source,
