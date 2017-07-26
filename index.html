@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mon premier Ajax</title>
+    <script src="ajax.js"></script>
+</head>
+
+<body>
+    <p id="para"></p>
+    <button id="requete">Lance Requête</button>
+    <p id="para2"></p>
+    <button id="requete2">Lance Requête</button>
+    <script>
+        //On crée une nouvelle instance d'objet AJAX
+        let ajax = new XMLHttpRequest();
+        //AJAX étant une service asynchrone, il va falloir 
+        //lui dire via des évènements comment se comporter
+        //au moment où il aura terminé sa requête et que
+        //sa reponse sera disponible
+        ajax.onreadystatechange = function() {
+            /*
+             */
+            if (ajax.readyState === 4) {
+                //on ne voudra manipuler la réponse seulement si 
+                //la requête s'est couronnée de succès
+                if (ajax.status === 200 || ajax.status === 304) {
+                    //la réponse de la requête en lui fournissant ...
+                    //l'objet ajax dans sa proprieté respon ...
+                    document.querySelector('#para2').innerHTML =
+                        ajax.response;
+
+                    //console.log(ajax.response);
+                }
+
+            }
+
+        };
+
+        //On ouvre la requête en lui fournissant le type de
+        //requête HTTP, l'url à récupérer et si c'est synchronisé
+        ajax.open('GET', 'fichier.txt', true);
+
+        //On envoie la requête
+        ajax.send();
+    </script>
+</body>
+
+</html>
