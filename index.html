@@ -10,11 +10,25 @@
 </head>
 
 <body>
-    <p id="para"></p>
+    <p id="param"></p>
     <button id="requete">Lance Requête</button>
     <p id="para2"></p>
     <button id="requete2">Lance Requête</button>
+    <p id="para3"></p>
+    </br>
+    <button id="requete3">Lance Roquette</button>
     <script>
+        document.querySelector("#requete3")
+            .addEventListener('click', function() {
+                doAjax({
+                    url: 'evil.js',
+                    callback: function(reponse) {
+                        document.querySelector("#para3")
+                    }
+                })
+            })
+        let xhr = XMLHttpRequest();
+
         document.querySelector("#requete")
             .addEventListener('click', function() {
                 doAjax({
@@ -48,9 +62,25 @@
             }
 
         };
+        let button = document.querySelector("#requete3");
+        button.addEventListener('click', function() {
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', 'evil.js');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            eval(xhr.responseText);
+                        }
+                        ekse {
+                            console.errir('unexpected status code.')
+                        }
 
-        //On ouvre la requête en lui fournissant le type de
-        //requête HTTP, l'url à récupérer et si c'est synchronisé
+
+                    }
+                }
+            })
+            //On ouvre la requête en lui fournissant le type de
+            //requête HTTP, l'url à récupérer et si c'est synchronisé
         ajax.open('GET', 'fichier.txt', true);
 
         //On envoie la requête
