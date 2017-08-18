@@ -2,7 +2,7 @@ function doAjax(options) {
     //On définit les paramètres par défaut de notre requête
     let defaults = {
         url: '',
-        method: 'GEt',
+        method: 'GET',
         async: true,
         args: '',
         callback: function() {},
